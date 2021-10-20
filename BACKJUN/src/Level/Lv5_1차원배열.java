@@ -3,10 +3,13 @@ package Level;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.StringTokenizer;
 
 public class Lv5_1차원배열 {
 	public static void main(String[] args) throws IOException {
-		quiz4();
+		quiz6();
 	}
 	
 	public static void quiz1() throws NumberFormatException, IOException {
@@ -95,30 +98,103 @@ public class Lv5_1차원배열 {
 	}
 	public static void quiz4() throws NumberFormatException, IOException {
 		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-		int[] arr1 = new int[10];
-		int[] arr2 = new int[10];
-		int temp, cnt = 0;
-		
-		for(int i=0; i<=arr1.length-1; i++) {
-			arr1[i] = Integer.parseInt(bf.readLine());
+		HashSet<Integer> h = new HashSet<Integer>();
+ 
+		for (int i = 0; i < 10; i++) {
+			h.add(bf.read() % 42);
 		}
-		
-		for(int i=0; i<=arr1.length-1; i++) {
-			temp = arr1[i]%42;
-			arr2[i] = temp;
-			for(int j=0; j<=i; j++) {
-				if(arr2[j] == temp) {
-					cnt++;
-				}
+        
+		System.out.print(h.size());
+	}
+	public static void quiz4_1() throws NumberFormatException, IOException {
+		boolean[] arr = new boolean[42];
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        
+        for(int i = 0 ; i < 10 ; i++) {
+            arr[Integer.parseInt(br.readLine()) % 42] = true;
+        }
+        
+        int count = 0;
+        for(boolean value : arr) {
+            if(value){    // value 가 true 라면
+                count++;
+            }
+        }
+        System.out.println(count);
+	}
+	public static void quiz5() throws NumberFormatException, IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int M,N;
+		int av = 0;
+		N = Integer.parseInt(br.readLine());
+		int[] arr = new int[N];
+		double[] arr2  = new double[N];
+		for(int i=0; i<arr.length; i++) {
+			arr[i] = Integer.parseInt(br.readLine());
+		}
+		//최댓값
+		M =  arr[0];
+		for(int i=0; i<arr.length; i++) {
+			if(M < arr[i]) {
+				M =  arr[i];
 			}
 		}
-//		System.out.println(cnt);
-//		for (int i : arr2) {
-//			System.out.println(i);
-//		}
-//		System.out.println(cnt);
+		
+		for(int i=0; i<arr2.length; i++) {
+			arr2[i] = (Math.round((arr[i]/(double)M) * 100)*100)/100;
+		}
 		
 		
+		for(int i=0; i<arr2.length; i++) {
+			av += arr2[i];
+		}
+		System.out.println(av/(double)arr2.length);
+	}
+	
+	public static void quiz5_1() throws NumberFormatException, IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		 
+		double arr[] = new double[Integer.parseInt(br.readLine())];
+        
+		StringTokenizer st = new StringTokenizer(br.readLine()," ");
+		
+		for(int i =0; i < arr.length; i++) {
+			arr[i] = Double.parseDouble(st.nextToken());
+		}
+		
+		double sum = 0;
+		
+		Arrays.sort(arr);
+		for (double d : arr) {
+			System.out.println(d);
+		}
+		
+		for(int i = 0; i < arr.length; i++) {
+			sum += ( (arr[i] / arr[arr.length-1])*100 );
+		}
+		System.out.print( sum/arr.length );
+	}
+	
+	public static void quiz6() throws NumberFormatException, IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String[] strArr = new String[Integer.parseInt(br.readLine())];
+		
+		for(int i=0; i<strArr.length; i++) {
+			strArr[i] = br.readLine();
+		}
+		
+		for(int i=0; i<strArr.length; i++) {
+			int tot = 0,cnt = 0;
+			for(int j=0; j<strArr[i].length(); j++) {
+				if(strArr[i].charAt(j) == 'O') {
+					cnt += 1;
+					tot += cnt;
+				}else if(strArr[i].charAt(j) == 'X') {
+					cnt = 0;
+				}
+			}
+			System.out.println(tot);
+		}
 		
 	}
 	
