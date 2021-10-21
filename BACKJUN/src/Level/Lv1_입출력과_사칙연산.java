@@ -7,16 +7,6 @@ import javax.security.sasl.SaslClient;
 public class Lv1_입출력과_사칙연산 {
 
 	public static void main(String[] args) {
-//		quiz1();
-//		quiz2();
-//		quiz3();
-//		quiz4();
-//		quiz5();
-//		quiz6();
-//		quiz7();
-//		quiz8();
-//		quiz9();
-//		quiz10();
 		quiz11();
 	}
 	
