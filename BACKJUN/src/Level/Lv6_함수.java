@@ -68,7 +68,7 @@ public class Lv6_함수 {
 			else {
 				strCnt = Integer.toString(i);
 				for(int j=0; j<strCnt.length();j++) {
-					System.out.println(j);
+					strCnt.charAt(j);
 				}
 			}
 		}
