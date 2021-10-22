@@ -60,18 +60,26 @@ public class Lv6_함수 {
 		BufferedReader br = new  BufferedReader(new InputStreamReader(System.in));
 		int temp = Integer.parseInt(br.readLine());
 		int cnt = 0;
+		int cal = 0;
 		String strCnt = "";
-		for(int i=1; i<temp; i++) {
+		for(int i=1; i<=temp; i++) {
 			if(i <= 99) {
 				cnt++;
 			}
 			else {
 				strCnt = Integer.toString(i);
 				for(int j=0; j<strCnt.length();j++) {
-					strCnt.charAt(j);
+					if(j==1) {
+						cal = Character.getNumericValue(strCnt.charAt(j)) - Character.getNumericValue(strCnt.charAt(j-1)) ;
+					}else if(j==2) {
+						if(cal + Character.getNumericValue(strCnt.charAt(j-1)) == Character.getNumericValue(strCnt.charAt(j))) {
+							cnt++;
+						}
+					}
 				}
 			}
 		}
+		System.out.println(cnt);
 	}
 	
 	
